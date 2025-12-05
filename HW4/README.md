@@ -2,6 +2,10 @@
 
 Neural network hyperparameter optimization using evolutionary and probabilistic search methods on the Federated EMNIST digit classification task.
 
+Github Usernmae: vapanpa
+
+Github Repo Link: https://github.com/vapanpa/mlds490-reinforcementlearning/tree/main/HW4
+
 ## Overview
 
 This project compares two automated hyperparameter tuning approaches:
