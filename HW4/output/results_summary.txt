@@ -1,0 +1,23 @@
+======================================================================
+FINAL RESULTS COMPARISON
+======================================================================
+
+Method                    Batch Size      Activation   Test F1   
+----------------------------------------------------------------------
+Genetic Algorithm         41              tanh         0.8826
+Bayesian Optimization     25              tanh         0.9008
+======================================================================
+
+--- Detailed Results ---
+
+Genetic Algorithm:
+  Best Batch Size: 41
+  Best Activation: tanh
+  Validation F1: 0.8029
+  Test F1: 0.8826
+
+Bayesian Optimization:
+  Best Batch Size: 25
+  Best Activation: tanh
+  Validation F1: 0.8209
+  Test F1: 0.9008

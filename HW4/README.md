@@ -2,7 +2,7 @@
 
 Neural network hyperparameter optimization using evolutionary and probabilistic search methods on the Federated EMNIST digit classification task.
 
-Github Usernmae: vapanpa
+Github Username: vapanpa
 
 Github Repo Link: https://github.com/vapanpa/mlds490-reinforcementlearning/tree/main/HW4
 
@@ -25,8 +25,16 @@ This project compares two automated hyperparameter tuning approaches:
 HW4/
 ├── HW4.ipynb          # Main notebook with all implementations
 ├── data/
-│   ├── train_data.npy # Federated EMNIST training data
-│   └── test_data.npy  # Federated EMNIST test data
+│   ├── train_data.npy # Federated EMNIST training data (raw)
+│   ├── test_data.npy  # Federated EMNIST test data (raw)
+│   ├── train_X.npy    # Constructed training inputs (generated)
+│   ├── train_y.npy    # Constructed training labels (generated)
+│   ├── test_X.npy     # Constructed test inputs (generated)
+│   └── test_y.npy     # Constructed test labels (generated)
+├── output/
+│   ├── ga_evolution.png    # GA fitness vs generation plot (generated)
+│   ├── training_curves.png # Training F1 vs epochs for both methods (generated)
+│   └── results_summary.txt # Final hyperparameters and test scores (generated)
 ├── requirements.txt   # Python dependencies
 └── README.md          # This file
 ```
@@ -51,6 +59,20 @@ pip install -r requirements.txt
 ### 3. Verify Data Files
 
 Ensure `train_data.npy` and `test_data.npy` are located in the `data/` subdirectory. The dataset should be in the federated format with client dictionaries containing `images` and `labels` keys.
+
+## Dataset Construction
+
+The notebook automatically constructs the required dataset files from the federated format:
+
+1. **Extracts** images and labels from all clients in the federated data
+2. **Filters** to keep only digit classes (0-9)
+3. **Saves** the processed data as:
+   - `data/train_X.npy` - Training input features
+   - `data/train_y.npy` - Training labels
+   - `data/test_X.npy` - Test input features
+   - `data/test_y.npy` - Test labels
+
+These files are generated when you run the first data preparation cell in the notebook.
 
 ## Running the Notebook
 
@@ -94,9 +116,18 @@ All models are evaluated using **macro-averaged F1 score**, which weights each c
 
 ## Expected Outputs
 
-1. **GA Evolution Plot**: Average and best fitness scores per generation
-2. **Training Curves**: F1 score vs. epochs for both optimization methods
-3. **Final Test Results**: Test F1 scores for models trained with optimal hyperparameters
+When you run the notebook, the following files are saved to the `output/` folder:
+
+| File | Description |
+|------|-------------|
+| `ga_evolution.png` | GA fitness evolution plot (avg & best vs generation) |
+| `training_curves.png` | Training F1 vs epochs for both GA and BO methods |
+| `results_summary.txt` | Final hyperparameters and test F1 scores |
+
+Additionally, the notebook displays:
+- Bayesian Optimization progress logs
+- Per-epoch training metrics
+- Final comparison table
 
 ## Troubleshooting
 
